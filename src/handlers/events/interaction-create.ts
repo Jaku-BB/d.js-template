@@ -2,6 +2,7 @@ import {
   type AutocompleteInteraction,
   type Interaction,
   Events,
+  inlineCode,
 } from 'discord.js';
 import {
   ApplicationCommandInteractionHandler,
@@ -10,6 +11,7 @@ import {
 } from '../../structures.js';
 import { databaseClient } from '../../utils/database.js';
 import { log } from '../../utils/logger.js';
+import { getRelativeTime } from '../../utils/date.js';
 
 const validateInteraction = async ({
   interactionKey,
@@ -54,8 +56,12 @@ const validateInteraction = async ({
       return true;
     }
 
+    const expiresAt = interactionCooldowns.get(user.id)!;
+
     await interaction.reply({
-      content: `You can't use this interaction right now.`,
+      content: `Hold up! Try again ${inlineCode(
+        getRelativeTime(expiresAt),
+      )}, please.`,
       ephemeral: true,
     });
 
