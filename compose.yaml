@@ -1,0 +1,27 @@
+name: template
+
+services:
+  database:
+    image: postgres:15.4-alpine
+    container_name: database
+    restart: unless-stopped
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  bot:
+    build: .
+    container_name: bot
+    restart: unless-stopped
+    depends_on:
+      - database
+    environment:
+      DISCORD_BOT_TOKEN: ${DISCORD_BOT_TOKEN}
+      DISCORD_CLIENT_ID: ${DISCORD_CLIENT_ID}
+      TEST_GUILD_ID: ${TEST_GUILD_ID}
+      DATABASE_URL: ${DATABASE_URL}
+
+volumes:
+  postgresql-data:

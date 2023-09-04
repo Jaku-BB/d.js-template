@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cooldown {
+  id             Int      @id @default(autoincrement())
+  interactionKey String   @map("interaction_key")
+  userId         String   @map("user_id")
+  expiresAt      DateTime @map("expires_at")
+
+  @@map("cooldown")
+}
