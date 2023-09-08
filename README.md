@@ -2,40 +2,67 @@
 
 ![Build](https://img.shields.io/github/actions/workflow/status/Jaku-BB/d.js-template/test.yml)
 
-This repository is a template for Discord bots using the [discord.js](https://discord.js.org/) library. It allows you to quickly start your own project, without the hassle of initial setup. It is mainly adapted to my needs, but you can easily change it as you wish.
+This repository contains a template for building Discord bots in [TypeScript](https://www.typescriptlang.org/) using the [discord.js](https://discord.js.org/) library.
+It allows you to quickly start your own project. Note that this template is mostly adapted to my projects, but feel free to contribute.
 
 ## Features
 
-- interaction handler (application commands, message components and modals) with built-in usage examples
+- interaction handler (application commands, message components and modals) with usage examples
 - event handler
-- built-in interaction cooldown support
-- initial database setup ([Prisma](https://www.prisma.io/))
-- [Docker](https://www.docker.com/) setup with [Docker Compose](https://docs.docker.com/compose/)
+- built-in support for interaction cooldown
+- environment validation
+- separate application commands registration script
+- [Docker](https://www.docker.com/) with [Docker Compose](https://docs.docker.com/compose/)
+
+## Requirements
+
+- [Node.js](https://nodejs.org/) >= v20.5.0
+- [pnpm](https://pnpm.io/)
+- access to a [PostgreSQL](https://www.postgresql.org/) database
 
 ## Installation
 
-First, create a new repository using this template (**Use this template** button), download it locally, create the `.env` file accordingly to the `.env.example` file and run the database (you can use the `compose.yaml` file for that, but remember to expose port **5432** locally).
+After creating a new repository using this template, download it locally.
+Then, create the `.env` file and fill it according to the `.env.example` file.
 
-After that, just run:
+If you want to use Docker for your database, feel free to use the `compose.yaml` file. 
+Just remember to expose port **5432** locally.
+
+To start the bot in development mode, run:
 
 ```shell
 pnpm install
 
-pnpm dlx prisma migrate deploy
+pnpm dlx prisma migrate dev
 pnpm dlx prisma generate
 
 pnpm run watch
 ```
 
-To register your application commands, simply run `pnpm run register-application-commands`.
+## Usage
 
-## Examples
+The `src` directory already contains everything you need to start your project.
+There are also some examples to help you along the way.
 
-You can find usage examples in the `src/handlers` directory. I think that they're pretty self-explanatory.
+### Your own handler
+
+If you want to add your own handler:
+
+- create a new file in the `handlers` directory
+- import the handler class you want to use from `structures.ts`
+- instantiate it and export it as the default
+- if your handler is an application command handler, remember to register it with `pnpm run register-application-commands`
+
+Simple as that!
+
+> **Note**  
+> Keep in mind that any interaction key, whether it's an application command name or a `customId` property, must be unique throughout your bot.
 
 ## Support
 
-For support, reach me on Discord - jaku.bb - or create an issue here.
+Be sure to have a look at the [discord.js guide](https://discordjs.guide/) if you need help with the library itself.
+
+If you need support, you can reach me on Discord - **jaku.bb** - or [create a new issue](https://github.com/Jaku-BB/d.js-template/issues) here.
 
 ## License
 
