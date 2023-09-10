@@ -1,11 +1,12 @@
 import { readdir as getDirectoryContent } from 'node:fs/promises';
 import { join as joinPath } from 'node:path';
 import { pathToFileURL } from 'node:url';
+
 import {
   ApplicationCommandInteractionHandler,
+  EventHandler,
   MessageComponentInteractionHandler,
   ModalSubmitInteractionHandler,
-  EventHandler,
 } from '../structures.js';
 
 const hasProperExtension = (path: string) => {

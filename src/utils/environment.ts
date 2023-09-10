@@ -1,5 +1,5 @@
-import { object, string } from 'zod';
 import { env as notSafeEnvironment } from 'node:process';
+import { object, string } from 'zod';
 
 const environmentSchema = object({
   DISCORD_BOT_TOKEN: string(),

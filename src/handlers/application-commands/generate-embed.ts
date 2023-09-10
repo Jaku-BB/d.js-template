@@ -8,6 +8,7 @@ import {
   TextInputBuilder,
   TextInputStyle,
 } from 'discord.js';
+
 import { ApplicationCommandInteractionHandler } from '../../structures.js';
 
 // noinspection JSUnusedGlobalSymbols

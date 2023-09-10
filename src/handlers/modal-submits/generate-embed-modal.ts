@@ -1,4 +1,5 @@
 import { EmbedBuilder } from 'discord.js';
+
 import { ModalSubmitInteractionHandler } from '../../structures.js';
 
 // noinspection JSUnusedGlobalSymbols
