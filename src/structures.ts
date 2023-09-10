@@ -1,20 +1,20 @@
 import type {
-  ClientEvents,
-  AutocompleteInteraction,
-  ModalSubmitInteraction,
   AnySelectMenuInteraction,
+  AutocompleteInteraction,
+  BaseInteraction,
   ButtonInteraction,
   ChatInputCommandInteraction,
+  ClientEvents,
   MessageContextMenuCommandInteraction,
-  UserContextMenuCommandInteraction,
+  ModalSubmitInteraction,
   SlashCommandBuilder,
-  BaseInteraction,
+  UserContextMenuCommandInteraction,
 } from 'discord.js';
 
 type AnyApplicationCommandInteraction =
   | ChatInputCommandInteraction
-  | UserContextMenuCommandInteraction
-  | MessageContextMenuCommandInteraction;
+  | MessageContextMenuCommandInteraction
+  | UserContextMenuCommandInteraction;
 
 type AnyMessageComponentInteraction =
   | AnySelectMenuInteraction
@@ -39,8 +39,8 @@ export class ApplicationCommandInteractionHandler<
   T extends AnyApplicationCommandInteraction = AnyApplicationCommandInteraction,
 > extends InteractionHandler<T> {
   public readonly builder:
-    | SlashCommandBuilder
-    | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>;
+    | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>
+    | SlashCommandBuilder;
   public readonly autocomplete?: (
     interaction: AutocompleteInteraction,
   ) => Promise<void>;

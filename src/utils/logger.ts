@@ -19,7 +19,7 @@ export const log = ({
 }: {
   message: string;
   data?: Record<string, unknown>;
-  level?: 'debug' | 'information' | 'error';
+  level?: 'debug' | 'error' | 'information';
 }) => {
   logger[level](data, message);
 };

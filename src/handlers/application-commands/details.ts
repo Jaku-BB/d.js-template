@@ -1,11 +1,12 @@
-import { memoryUsage } from 'node:process';
 import {
-  bold,
   type ChatInputCommandInteraction,
   Colors,
   EmbedBuilder,
   SlashCommandBuilder,
+  bold,
 } from 'discord.js';
+import { memoryUsage } from 'node:process';
+
 import { ApplicationCommandInteractionHandler } from '../../structures.js';
 
 // noinspection JSUnusedGlobalSymbols

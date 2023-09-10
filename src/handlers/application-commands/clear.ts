@@ -1,10 +1,11 @@
 import {
   type ChatInputCommandInteraction,
   type GuildTextBasedChannel,
-  inlineCode,
   PermissionFlagsBits,
   SlashCommandBuilder,
+  inlineCode,
 } from 'discord.js';
+
 import { ApplicationCommandInteractionHandler } from '../../structures.js';
 
 // noinspection JSUnusedGlobalSymbols
