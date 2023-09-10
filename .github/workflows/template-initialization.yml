@@ -1,0 +1,27 @@
+name: Template initialization
+
+on:
+  create:
+
+permissions:
+  contents: write
+
+jobs:
+  template-initialization:
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Remove this script
+        run: |
+          rm .github/workflows/template-initialization.yml
+
+      - name: Overwrite initial commit
+        run: |
+          git config user.email ${{ github.actor }}@users.noreply.github.com
+          git config user.name ${{ github.actor }}
+          git add . 
+          git commit --message "chore: initial commit" --amend
+          git push origin HEAD --force
