@@ -5,6 +5,9 @@ services:
     image: postgres:15.4-alpine
     container_name: database
     restart: unless-stopped
+    #    Remove the comment below to expose the database to the host, for local development.
+    #    ports:
+    #      - 5432:5432
     volumes:
       - postgresql-data:/var/lib/postgresql/data
     environment:
