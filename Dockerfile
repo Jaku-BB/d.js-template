@@ -1,4 +1,4 @@
-FROM node:20.5.0-bookworm-slim as builder
+FROM node:20.6.0-bookworm-slim as builder
 
 WORKDIR /usr/src/app
 
@@ -15,7 +15,7 @@ RUN pnpm prune --config.production --config.ignore-scripts=true
 
 RUN rm -R ./src ./tsconfig.json
 
-FROM node:20.5.0-bookworm-slim
+FROM node:20.6.0-bookworm-slim
 
 WORKDIR /usr/src/app
 

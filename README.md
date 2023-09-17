@@ -16,7 +16,7 @@ It allows you to quickly start your own project. Note that this template is most
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/) >= v20.5.0
+- [Node.js](https://nodejs.org/) >= v20.6.0
 - [pnpm](https://pnpm.io/)
 - access to a [PostgreSQL](https://www.postgresql.org/) database
 
