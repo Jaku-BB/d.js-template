@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "start:migrate": "pnpm dlx prisma migrate deploy && pnpm run start",
-    "watch": "concurrently \"tsc --watch\" \"node --env-file .env --watch dist/index.js | pnpm run prettify-logs\"",
+    "dev": "concurrently \"tsc --watch\" \"node --env-file .env --watch dist/index.js | pnpm run prettify-logs\"",
     "build": "tsc",
     "prettify-logs": "pino-pretty --translateTime \"SYS:dd-mm-yyyy|HH:MM:ss\" --customLevels debug:10,information:20,error:30 --customColors debug:gray,information:blue,error:red",
     "register-application-commands": "node --require dotenv/config dist/register-application-commands.js",
