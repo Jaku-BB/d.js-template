@@ -9,8 +9,8 @@ dependencies:
     specifier: 5.3.1
     version: 5.3.1(prisma@5.3.1)
   croner:
-    specifier: ^7.0.1
-    version: 7.0.1
+    specifier: ^7.0.2
+    version: 7.0.2
   discord-api-types:
     specifier: ^0.37.58
     version: 0.37.58
@@ -728,8 +728,8 @@ packages:
       yargs: 17.7.2
     dev: true
 
-  /croner@7.0.1:
-    resolution: {integrity: sha512-G2w4l4ZRwvfUBSUaBXqOS0xtsHpIGsROuOYqLxkV9VWfU7O6ZRuEncvxx08a8vAbKVc3WFD3/rxIFBGfg6Sbww==}
+  /croner@7.0.2:
+    resolution: {integrity: sha512-n/5YNW+9grGxfSMNonier4ohkks7QtB3HrNzadE+wPEeeB/C+DP7T4hwLQ2bb8rZz3iaQads/Sn6yUL0d+13rw==}
     engines: {node: '>=6.0'}
     dev: false
 
