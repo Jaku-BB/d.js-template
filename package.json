@@ -20,7 +20,7 @@
     "discord-api-types": "^0.37.58",
     "discord.js": "^14.12.1",
     "inquirer": "^9.2.11",
-    "pino": "^8.15.1",
+    "pino": "^8.15.3",
     "zod": "^3.22.1"
   },
   "devDependencies": {
