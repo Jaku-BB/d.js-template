@@ -29,8 +29,8 @@ dependencies:
 
 devDependencies:
   '@types/inquirer':
-    specifier: ^9.0.4
-    version: 9.0.4
+    specifier: ^9.0.6
+    version: 9.0.6
   '@types/node':
     specifier: ^20.8.6
     version: 20.8.6
@@ -283,8 +283,8 @@ packages:
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
-  /@types/inquirer@9.0.4:
-    resolution: {integrity: sha512-x8UgutCLm5tsp995aeYB8dlT+sGBCtv0zE43tHvo7OljtlA2Rn4+COyLKe9+YjB20uy0G14y0C9vCD2KtNtyGA==}
+  /@types/inquirer@9.0.6:
+    resolution: {integrity: sha512-1Go1AAP/yOy3Pth5Xf1DC3nfZ03cJLCPx6E2YnSN/5I3w1jHBVH4170DkZ+JxfmA7c9kL9+bf9z3FRGa4kNAqg==}
     dependencies:
       '@types/through': 0.0.30
       rxjs: 7.8.1
