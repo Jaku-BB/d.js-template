@@ -25,7 +25,7 @@ It allows you to quickly start your own project. Note that this template is most
 After creating a new repository using this template, download it locally.
 Then, create the `.env` file and fill it according to the `.env.example` file.
 
-If you want to use Docker for your database, feel free to use the `compose.yaml` file. 
+If you want to use Docker for your database, feel free to use the `compose.yaml` file.
 Just remember to expose port **5432** locally.
 
 To start the bot in development mode, run:
