@@ -6,6 +6,8 @@ import type {
   ModalSubmitInteractionHandler,
 } from './structures.js';
 
+export type CooldownMap = Map<Snowflake, Date>;
+
 declare module 'discord.js' {
   interface Client {
     handlers: {
@@ -13,6 +15,6 @@ declare module 'discord.js' {
       messageComponents: Map<string, MessageComponentInteractionHandler>;
       modalSubmits: Map<string, ModalSubmitInteractionHandler>;
     };
-    cooldowns: Map<string, Map<Snowflake, Date>>;
+    cooldowns: Map<string, CooldownMap>;
   }
 }

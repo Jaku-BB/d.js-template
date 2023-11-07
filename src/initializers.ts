@@ -1,5 +1,7 @@
 import { type Client, Events } from 'discord.js';
 
+import type { CooldownMap } from './types.js';
+
 import { databaseClient } from './utils/database.js';
 import { getAllHandlers } from './utils/get-all-handlers.js';
 
@@ -46,7 +48,8 @@ export const initializeCacheData = async (client: Client) => {
 
   client.cooldowns = activeCooldowns.reduce<Client['cooldowns']>(
     (cooldowns, { interactionKey, userId, expiresAt }) => {
-      const interactionCooldowns = cooldowns.get(interactionKey) ?? new Map();
+      const interactionCooldowns =
+        cooldowns.get(interactionKey) ?? (new Map() as CooldownMap);
       interactionCooldowns.set(userId, expiresAt);
 
       setTimeout(() => {
