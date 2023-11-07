@@ -9,7 +9,7 @@ import {
   TextInputStyle,
 } from 'discord.js';
 
-import { ApplicationCommandInteractionHandler } from '../../structures.js';
+import { ApplicationCommandInteractionHandler } from '~/structures.js';
 
 // noinspection JSUnusedGlobalSymbols
 export default new ApplicationCommandInteractionHandler<ChatInputCommandInteraction>(

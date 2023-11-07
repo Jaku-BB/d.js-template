@@ -7,7 +7,7 @@ import {
 } from 'discord.js';
 import { memoryUsage } from 'node:process';
 
-import { ApplicationCommandInteractionHandler } from '../../structures.js';
+import { ApplicationCommandInteractionHandler } from '~/structures.js';
 
 // noinspection JSUnusedGlobalSymbols
 export default new ApplicationCommandInteractionHandler<ChatInputCommandInteraction>(

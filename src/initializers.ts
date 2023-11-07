@@ -1,9 +1,9 @@
 import { type Client, Events } from 'discord.js';
 
-import type { CooldownMap } from './types.js';
+import type { CooldownMap } from '~/types.js';
 
-import { databaseClient } from './utils/database.js';
-import { getAllHandlers } from './utils/get-all-handlers.js';
+import { databaseClient } from '~/utils/database.js';
+import { getAllHandlers } from '~/utils/get-all-handlers.js';
 
 export const initializeHandlers = async (client: Client) => {
   const handlers = await getAllHandlers();

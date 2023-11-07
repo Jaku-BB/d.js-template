@@ -5,9 +5,9 @@ import {
 import { Routes } from 'discord-api-types/v10';
 import inquirer from 'inquirer';
 
-import { environment } from './utils/environment.js';
-import { getAllHandlers } from './utils/get-all-handlers.js';
-import { log } from './utils/logger.js';
+import { environment } from '~/utils/environment.js';
+import { getAllHandlers } from '~/utils/get-all-handlers.js';
+import { log } from '~/utils/logger.js';
 
 type RegistrationType = 'global' | 'guild';
 

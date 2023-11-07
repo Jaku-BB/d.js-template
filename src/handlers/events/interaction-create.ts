@@ -9,10 +9,10 @@ import {
   ApplicationCommandInteractionHandler,
   EventHandler,
   InteractionHandler,
-} from '../../structures.js';
-import { databaseClient } from '../../utils/database.js';
-import { getRelativeTime } from '../../utils/date.js';
-import { log } from '../../utils/logger.js';
+} from '~/structures.js';
+import { databaseClient } from '~/utils/database.js';
+import { getRelativeTime } from '~/utils/date.js';
+import { log } from '~/utils/logger.js';
 
 const validateInteraction = async ({
   interactionKey,

@@ -1,7 +1,7 @@
 import { Client, IntentsBitField } from 'discord.js';
 
-import { initializeCacheData, initializeHandlers } from './initializers.js';
-import { environment } from './utils/environment.js';
+import { initializeCacheData, initializeHandlers } from '~/initializers.js';
+import { environment } from '~/utils/environment.js';
 
 const client = new Client({
   intents: [IntentsBitField.Flags.Guilds],

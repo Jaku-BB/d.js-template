@@ -4,7 +4,7 @@ import type {
   ApplicationCommandInteractionHandler,
   MessageComponentInteractionHandler,
   ModalSubmitInteractionHandler,
-} from './structures.js';
+} from '~/structures.js';
 
 export type CooldownMap = Map<Snowflake, Date>;
 
