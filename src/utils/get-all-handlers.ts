@@ -17,7 +17,8 @@ type Handlers = {
   applicationCommands: ApplicationCommandInteractionHandler[];
   messageComponents: MessageComponentInteractionHandler[];
   modalSubmits: ModalSubmitInteractionHandler[];
-  events: EventHandler<never>[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  events: EventHandler<any>[];
 };
 
 export const getAllHandlers = async () => {
