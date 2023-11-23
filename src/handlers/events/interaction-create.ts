@@ -91,8 +91,8 @@ export default new EventHandler({
         isCommandInteraction || isAutocompleteInteraction
           ? 'applicationCommands'
           : interaction.isMessageComponent()
-          ? 'messageComponents'
-          : 'modalSubmits'
+            ? 'messageComponents'
+            : 'modalSubmits'
       ].get(interactionKey);
 
     if (!handler) {
