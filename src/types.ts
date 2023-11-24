@@ -15,6 +15,7 @@ declare module 'discord.js' {
       messageComponents: Map<string, MessageComponentInteractionHandler>;
       modalSubmits: Map<string, ModalSubmitInteractionHandler>;
     };
-    cooldowns: Map<string, CooldownMap>;
+    cooldowns: Map<Snowflake, Map<string, CooldownMap>>;
+    globalCooldowns: Map<string, CooldownMap>;
   }
 }

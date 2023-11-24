@@ -20,13 +20,24 @@ type AnyMessageComponentInteraction =
   | AnySelectMenuInteraction
   | ButtonInteraction;
 
+type OptionsWithCooldown = {
+  cooldownDuration?: number;
+  globalCooldownDuration?: never;
+};
+
+type OptionsWithGlobalCooldown = {
+  cooldownDuration?: never;
+  globalCooldownDuration?: number;
+};
+
+export type InteractionHandlerOptions =
+  | OptionsWithCooldown
+  | OptionsWithGlobalCooldown;
+
 export abstract class InteractionHandler<
   T extends BaseInteraction = BaseInteraction,
 > {
-  public readonly options: {
-    // Cooldown duration in seconds.
-    cooldownDuration?: number;
-  };
+  public readonly options: InteractionHandlerOptions;
   public readonly execute: (interaction: T) => Promise<void>;
 
   protected constructor({ options, execute }: InteractionHandler<T>) {
