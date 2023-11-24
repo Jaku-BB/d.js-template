@@ -9,7 +9,7 @@ It allows you to quickly start your own project. Note that this template is most
 
 - interaction handler (application commands, message components and modals) with usage examples
 - event handler
-- built-in support for interaction cooldown
+- built-in support for interaction cooldown (global and per guild or direct message)
 - environment validation
 - separate application commands registration script
 - [Docker](https://www.docker.com/) with [Docker Compose](https://docs.docker.com/compose/)
@@ -57,6 +57,28 @@ Simple as that!
 
 > **Note**  
 > Keep in mind that any interaction key, whether it's an application command name or a `customId` property, must be unique throughout your bot.
+
+#### Cooldown support
+
+To enable cooldown support in your handler, you need to define either `cooldownDuration` (per guild or direct message) or `globalCooldownDuration` in the `options` object.
+
+By default, each new cooldown is saved to the database if it is equal to or longer than the `MINIMUM_DURATION_TO_SAVE` constant (**60** by default) in the `src/utils/validation/cooldown.ts` file.
+
+```ts
+export default new MessageComponentInteractionHandler<ButtonInteraction>({
+  id: 'example',
+  options: {
+    cooldownDuration: 60, // per guild or direct message
+    globalCooldownDuration: 60,
+  },
+  execute: async (interaction) => {
+    // Your code goes here...
+  },
+});
+```
+
+> **Note**  
+> You can only specify one cooldown scope per handler.
 
 ## Support
 
