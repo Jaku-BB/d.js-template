@@ -9,6 +9,7 @@ datasource db {
 
 model Cooldown {
   id             Int      @id @default(autoincrement())
+  scopeKey       String?  @map("scope_key")
   interactionKey String   @map("interaction_key")
   userId         String   @map("user_id")
   expiresAt      DateTime @map("expires_at")
