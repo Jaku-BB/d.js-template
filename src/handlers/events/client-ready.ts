@@ -13,8 +13,7 @@ export default new EventHandler({
 
     // Delete expired cooldowns every 5 minutes.
     Cron('*/5 * * * *', async () => {
-      // noinspection JSUnresolvedReference
-      await databaseClient.cooldown.deleteMany({
+      await databaseClient['cooldown']['deleteMany']({
         where: {
           expiresAt: {
             lt: new Date(),

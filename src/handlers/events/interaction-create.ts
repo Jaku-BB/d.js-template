@@ -1,76 +1,11 @@
-import {
-  type AutocompleteInteraction,
-  Events,
-  type Interaction,
-  inlineCode,
-} from 'discord.js';
+import { Events } from 'discord.js';
 
 import {
   ApplicationCommandInteractionHandler,
   EventHandler,
-  InteractionHandler,
 } from '~/structures.js';
-import { databaseClient } from '~/utils/database.js';
-import { getRelativeTime } from '~/utils/date.js';
 import { log } from '~/utils/logger.js';
-
-const validateInteraction = async ({
-  interactionKey,
-  interaction,
-  options,
-}: {
-  interactionKey: string;
-  interaction: Exclude<Interaction, AutocompleteInteraction>;
-  options: InteractionHandler['options'];
-}) => {
-  const { client, user } = interaction;
-
-  if (options.cooldownDuration && options.cooldownDuration > 0) {
-    const MINIMUM_COOLDOWN_TO_SAVE = 60;
-
-    if (!client.cooldowns.has(interactionKey)) {
-      client.cooldowns.set(interactionKey, new Map());
-    }
-
-    const interactionCooldowns = client.cooldowns.get(interactionKey)!;
-
-    if (!interactionCooldowns.has(user.id)) {
-      const cooldownInMilliseconds = options.cooldownDuration * 1000;
-      const expiresAt = new Date(Date.now() + cooldownInMilliseconds);
-
-      interactionCooldowns.set(user.id, expiresAt);
-
-      if (options.cooldownDuration >= MINIMUM_COOLDOWN_TO_SAVE) {
-        await databaseClient.cooldown.create({
-          data: {
-            interactionKey,
-            userId: user.id,
-            expiresAt,
-          },
-        });
-      }
-
-      setTimeout(() => {
-        interactionCooldowns.delete(user.id);
-      }, cooldownInMilliseconds);
-
-      return true;
-    }
-
-    const expiresAt = interactionCooldowns.get(user.id)!;
-
-    await interaction.reply({
-      content: `Hold up! Try again ${inlineCode(
-        getRelativeTime(expiresAt),
-      )}, please.`,
-      ephemeral: true,
-    });
-
-    return false;
-  }
-
-  return true;
-};
+import { validateInteraction } from '~/utils/validation/index.js';
 
 // noinspection JSUnusedGlobalSymbols
 export default new EventHandler({
@@ -113,6 +48,7 @@ export default new EventHandler({
         return autocomplete(interaction);
       }
 
+      // This function is also responsible for responding to the interaction if there's an error during validation.
       if (
         !(await validateInteraction({
           interactionKey,

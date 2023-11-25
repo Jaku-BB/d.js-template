@@ -32,9 +32,9 @@ export const initializeHandlers = async (client: Client) => {
 };
 
 export const initializeCacheData = async (client: Client) => {
-  // noinspection JSUnresolvedReference
-  const activeCooldowns = await databaseClient.cooldown.findMany({
+  const activeCooldowns = await databaseClient['cooldown']['findMany']({
     select: {
+      scopeKey: true,
       interactionKey: true,
       userId: true,
       expiresAt: true,
@@ -46,18 +46,36 @@ export const initializeCacheData = async (client: Client) => {
     },
   });
 
-  client.cooldowns = activeCooldowns.reduce<Client['cooldowns']>(
-    (cooldowns, { interactionKey, userId, expiresAt }) => {
-      const interactionCooldowns =
-        cooldowns.get(interactionKey) ?? (new Map() as CooldownMap);
-      interactionCooldowns.set(userId, expiresAt);
+  client.cooldowns = new Map();
+  client.globalCooldowns = new Map();
 
-      setTimeout(() => {
-        interactionCooldowns.delete(userId);
-      }, expiresAt.getTime() - Date.now());
+  for (const {
+    scopeKey,
+    interactionKey,
+    userId,
+    expiresAt,
+  } of activeCooldowns) {
+    if (scopeKey) {
+      if (!client.cooldowns.has(scopeKey)) {
+        client.cooldowns.set(scopeKey, new Map());
+      }
+    }
 
-      return cooldowns.set(interactionKey, interactionCooldowns);
-    },
-    new Map(),
-  );
+    const scopeMap = scopeKey
+      ? client.cooldowns.get(scopeKey)!
+      : client.globalCooldowns;
+
+    if (!scopeMap.has(interactionKey)) {
+      scopeMap.set(interactionKey, new Map());
+    }
+
+    const cooldownMap =
+      scopeMap.get(interactionKey) ?? (new Map() as CooldownMap);
+
+    cooldownMap.set(userId, expiresAt);
+
+    setTimeout(() => {
+      cooldownMap.delete(userId);
+    }, expiresAt.getTime() - Date.now());
+  }
 };
