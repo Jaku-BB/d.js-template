@@ -15,7 +15,7 @@
   "author": "Jakub Bukała",
   "license": "MIT",
   "dependencies": {
-    "@prisma/client": "5.7.1",
+    "@prisma/client": "5.8.1",
     "croner": "^8.0.0",
     "discord-api-types": "^0.37.67",
     "discord.js": "^14.14.1",
