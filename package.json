@@ -19,7 +19,7 @@
     "croner": "^8.0.0",
     "discord-api-types": "^0.37.67",
     "discord.js": "^14.14.1",
-    "inquirer": "^9.2.12",
+    "inquirer": "^9.2.14",
     "pino": "^8.17.2",
     "zod": "^3.22.4"
   },
