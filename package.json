@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "5.8.1",
-    "croner": "^8.0.0",
+    "croner": "^8.0.2",
     "discord-api-types": "^0.37.67",
     "discord.js": "^14.14.1",
     "inquirer": "^9.2.15",
